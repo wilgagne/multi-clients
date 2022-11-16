@@ -15,6 +15,15 @@ public class clientWriter implements Runnable {
 
   public void run() {
     try (
+        FileWriter fw = new FileWriter(dir);
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter out = new PrintWriter(bw)) {
+        out.print("");
+    } catch (IOException exception) {
+      System.out.println("Could not write to : " + dir);
+    }
+
+    try (
         FileWriter fw = new FileWriter(dir, true);
         BufferedWriter bw = new BufferedWriter(fw);
         PrintWriter out = new PrintWriter(bw)) {
