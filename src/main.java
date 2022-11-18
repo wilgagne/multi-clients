@@ -1,23 +1,55 @@
+import java.util.ArrayList;
+
 public class main {
     public static void main(String[] args) {
-        int i = 1;
-        while (i <= 8) {
-            System.out.println("i is " + i);
-            for (int n = 1; n <= i; ++n){
-                System.out.println("Started a client");
-                clientWriter clientWriter = new clientWriter(n);
+
+        long[] data = new long[6665000];
+
+        for (int i = 0; i < 6665000; i++) {
+            data[i] = 0L;
+        }
+
+        ArrayList<long[]> dataArray = new ArrayList<>();
+        dataArray.add(data);
+        dataArray.add(data);
+        dataArray.add(data);
+        dataArray.add(data);
+        dataArray.add(data);
+
+        int j = 1;
+        while (j <= 8) {
+            ArrayList<Thread> allWriters = new ArrayList<>();
+            System.out.println("j is " + j);
+
+            for (int n = 1; n <= j; n++){
+//                System.out.println("n is " + n);
+//                System.out.println("Started a client");
+                ClientWriter clientWriter = new ClientWriter(n, dataArray);
                 Thread newPrinter = new Thread(clientWriter);
                 newPrinter.start();
+                allWriters.add(newPrinter);
+//                System.out.println("writer began: " + newPrinter.getId());
             }
-            i = i * 2;
+
+            allWriters.forEach(writer -> {
+                try {
+                    writer.join();
+//                    System.out.println("writer finished: " + writer.getId());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
 
             try {
                 System.out.println("Thread asleep");
-                Thread.sleep(300000);
+               Thread.sleep(30000);
+//                Thread.sleep(10000);
                 System.out.println("Thread awakened");
             } catch (InterruptedException e){
                 System.out.println("Couldn't sleep");
             }
+
+            j = j * 2;
         }
         System.out.println("DONE");
     }
