@@ -6,7 +6,7 @@ public class main {
 //        long[] data = new long[6665000];
         long[] data = new long[666500];
 
-        for (int i = 0; i < 6665000; i++) {
+        for (int i = 0; i < 666500; i++) {
             data[i] = 0L;
         }
 
