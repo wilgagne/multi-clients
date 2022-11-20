@@ -4,9 +4,9 @@ public class main {
     public static void main(String[] args) {
 
 //        long[] data = new long[6665000];
-        long[] data = new long[1333000];
+        long[] data = new long[3332500];
 
-        for (int i = 0; i < 1333000; i++) {
+        for (int i = 0; i < 3332500; i++) {
             data[i] = 0L;
         }
 
