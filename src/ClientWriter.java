@@ -15,7 +15,7 @@ public class ClientWriter implements Runnable {
   }
 
   public void run() {
-    String dir = String.format("/Users/williamgagne/Desktop/%s.txt", clientNumber);
+    String dir = String.format("/pathfs/%s.txt", clientNumber);
     File file = new File(dir);
 
     try (
