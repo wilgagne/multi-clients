@@ -25,7 +25,7 @@ public class main {
             for (int n = 1; n <= j; n++){
 //                System.out.println("n is " + n);
 //                System.out.println("Started a client");
-                ClientWriter clientWriter = new ClientWriter(n, dataArray);
+                ClientWriter clientWriter = new ClientWriter(j, n, dataArray);
                 Thread newPrinter = new Thread(clientWriter);
                 newPrinter.start();
                 allWriters.add(newPrinter);
