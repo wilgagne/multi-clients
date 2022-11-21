@@ -6,18 +6,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ClientWriter implements Runnable {
-  int numberOfClient;
   int clientNumber;
   ArrayList<long[]> text;
 
-  public ClientWriter(int j, int n, ArrayList<long[]> data){
-    numberOfClient = j;
+  public ClientWriter(int n, ArrayList<long[]> data){
     clientNumber = n;
     text = data;
   }
 
   public void run() {
-    String dir = String.format("/pathfs/%s-%s.txt", numberOfClient, clientNumber);
+    String dir = String.format("/pathfs/%s.txt", clientNumber);
     File file = new File(dir);
 
     try (
