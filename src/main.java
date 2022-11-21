@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class main {
     public static void main(String[] args) {
+        int[] numClient = {1, 2, 4, 6};
 
 //        long[] data = new long[6665000];
         long[] data = new long[2666000];
@@ -17,12 +18,12 @@ public class main {
         dataArray.add(data);
         dataArray.add(data);
 
-        int j = 1;
-        while (j <= 8) {
+        int j = 0;
+        while (j < numClient.length) {
             ArrayList<Thread> allWriters = new ArrayList<>();
-            System.out.println("j is " + j);
+            System.out.println("numClient is " + numClient[j]);
 
-            for (int n = 1; n <= j; n++){
+            for (int n = 1; n <= numClient[j]; n++){
 //                System.out.println("n is " + n);
 //                System.out.println("Started a client");
                 ClientWriter clientWriter = new ClientWriter(n, dataArray);
@@ -43,13 +44,13 @@ public class main {
 
             try {
                 System.out.println("Thread asleep");
-               Thread.sleep(60000 * (long) j);
+               Thread.sleep(60000 * (long) numClient[j]);
                 System.out.println("Thread awakened");
             } catch (InterruptedException e){
                 System.out.println("Couldn't sleep");
             }
 
-            j = j * 2;
+            j = j + 1;
         }
         System.out.println("DONE");
     }
