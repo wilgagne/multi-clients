@@ -43,7 +43,7 @@ public class main {
 
             try {
                 System.out.println("Thread asleep");
-               Thread.sleep(120000);
+               Thread.sleep(300000);
                 System.out.println("Thread awakened");
             } catch (InterruptedException e){
                 System.out.println("Couldn't sleep");
