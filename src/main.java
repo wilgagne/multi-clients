@@ -4,9 +4,9 @@ public class main {
     public static void main(String[] args) {
 
 //        long[] data = new long[6665000];
-        long[] data = new long[1333000];
+        long[] data = new long[2666000];
 
-        for (int i = 0; i < 1333000; i++) {
+        for (int i = 0; i < 2666000; i++) {
             data[i] = 0L;
         }
 
@@ -43,8 +43,7 @@ public class main {
 
             try {
                 System.out.println("Thread asleep");
-               Thread.sleep(30000);
-//                Thread.sleep(10000);
+               Thread.sleep(120000);
                 System.out.println("Thread awakened");
             } catch (InterruptedException e){
                 System.out.println("Couldn't sleep");
