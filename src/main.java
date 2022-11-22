@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class main {
     public static void main(String[] args) {
-        int[] numClient = {1, 2, 4, 6};
+        int[] numClient = {1, 2, 3, 4};
 
 //        long[] data = new long[6665000];
         long[] data = new long[2666000];
@@ -26,7 +26,7 @@ public class main {
             for (int n = 1; n <= numClient[j]; n++){
 //                System.out.println("n is " + n);
 //                System.out.println("Started a client");
-                ClientWriter clientWriter = new ClientWriter(n, dataArray);
+                ClientWriter clientWriter = new ClientWriter(numClient[j], n, dataArray);
                 Thread newPrinter = new Thread(clientWriter);
                 newPrinter.start();
                 allWriters.add(newPrinter);
