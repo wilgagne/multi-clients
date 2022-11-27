@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class main {
     public static void main(String[] args) {
-        int[] numClient = {1, 2, 3, 4};
+        int[] numClient = {6};
 
 //        long[] data = new long[6665000];
         long[] data = new long[2666000];
