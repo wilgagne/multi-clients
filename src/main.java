@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class main {
     public static void main(String[] args) {
-        int[] numClient = {8};
+        int[] numClient = {6};
 
 //        long[] data = new long[6665000];
         long[] data = new long[2666000];
@@ -18,39 +18,41 @@ public class main {
         dataArray.add(data);
         dataArray.add(data);
 
-        int j = 0;
-        while (j < numClient.length) {
-            ArrayList<Thread> allWriters = new ArrayList<>();
-            System.out.println("numClient is " + numClient[j]);
+        for(int i = 1; i <= 5; i++) {
+            int j = 0;
+            while (j < numClient.length) {
+                ArrayList<Thread> allWriters = new ArrayList<>();
+                System.out.println("numClient is " + numClient[j]);
 
-            for (int n = 1; n <= numClient[j]; n++){
+                for (int n = 1; n <= numClient[j]; n++) {
 //                System.out.println("n is " + n);
 //                System.out.println("Started a client");
-                ClientWriter clientWriter = new ClientWriter(numClient[j], n, dataArray);
-                Thread newPrinter = new Thread(clientWriter);
-                newPrinter.start();
-                allWriters.add(newPrinter);
+                    ClientWriter clientWriter = new ClientWriter(i, n, dataArray);
+                    Thread newPrinter = new Thread(clientWriter);
+                    newPrinter.start();
+                    allWriters.add(newPrinter);
 //                System.out.println("writer began: " + newPrinter.getId());
-            }
-
-            allWriters.forEach(writer -> {
-                try {
-                    writer.join();
-//                    System.out.println("writer finished: " + writer.getId());
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
-            });
 
-            try {
-                System.out.println("Thread asleep");
-               Thread.sleep(60000 * (long) numClient[j]);
-                System.out.println("Thread awakened");
-            } catch (InterruptedException e){
-                System.out.println("Couldn't sleep");
+                allWriters.forEach(writer -> {
+                    try {
+                        writer.join();
+//                    System.out.println("writer finished: " + writer.getId());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                });
+
+                try {
+                    System.out.println("Thread asleep");
+                    Thread.sleep(10000 * (long) numClient[j]);
+                    System.out.println("Thread awakened");
+                } catch (InterruptedException e) {
+                    System.out.println("Couldn't sleep");
+                }
+
+                j = j + 1;
             }
-
-            j = j + 1;
         }
         System.out.println("DONE");
     }
