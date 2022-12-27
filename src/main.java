@@ -18,7 +18,7 @@ public class main {
         dataArray.add(data);
         dataArray.add(data);
 
-        for(int i = 1; i <= 2; i++) {
+        for(int i = 1; i <= 3; i++) {
             int j = 0;
             while (j < numClient.length) {
                 ArrayList<Thread> allWriters = new ArrayList<>();
